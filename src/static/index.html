@@ -7,9 +7,33 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <nav class="navbar" aria-label="Main navigation">
+        <button class="navbar-toggle" aria-label="Open navigation menu" aria-controls="drawer" aria-expanded="false" id="drawerToggle">
+          <span class="navbar-hamburger"></span>
+        </button>
+        <h1 class="navbar-title">Mergington High School</h1>
+        <h2 class="navbar-subtitle">Extracurricular Activities</h2>
+        <div class="navbar-links">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#activities-container" class="nav-link">Activities</a>
+          <a href="#signup-container" class="nav-link">Sign Up</a>
+          <a href="#calendar" class="nav-link">Calendar</a>
+          <a href="#admin" class="nav-link">Admin</a>
+        </div>
+      </nav>
+      <!-- Drawer for mobile navigation -->
+      <aside class="drawer" id="drawer" aria-hidden="true" tabindex="-1">
+        <button class="drawer-close" aria-label="Close navigation menu" id="drawerClose">&times;</button>
+        <ul class="drawer-links">
+          <li><a href="#" class="drawer-link">Home</a></li>
+          <li><a href="#activities-container" class="drawer-link">Activities</a></li>
+          <li><a href="#signup-container" class="drawer-link">Sign Up</a></li>
+          <li><a href="#calendar" class="drawer-link">Calendar</a></li>
+          <li><a href="#admin" class="drawer-link">Admin</a></li>
+        </ul>
+      </aside>
     </header>
 
     <main>
