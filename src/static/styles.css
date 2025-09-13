@@ -1,3 +1,129 @@
+/* --- Responsive Navbar and Drawer Styles --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a237e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: relative;
+}
+.navbar-title {
+  font-size: 2rem;
+  margin: 0 10px 0 0;
+}
+.navbar-subtitle {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin: 0 0 0 10px;
+  flex: 1;
+}
+.navbar-links {
+  display: flex;
+  gap: 18px;
+}
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: #a2eeef;
+}
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.navbar-hamburger {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: white;
+  position: relative;
+}
+.navbar-hamburger::before,
+.navbar-hamburger::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  transition: 0.2s;
+}
+.navbar-hamburger::before {
+  top: -9px;
+}
+.navbar-hamburger::after {
+  top: 9px;
+}
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-title, .navbar-subtitle {
+    font-size: 1.2rem;
+  }
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #1a237e;
+  color: white;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  z-index: 1000;
+  padding-top: 30px;
+  outline: none;
+}
+.drawer[aria-hidden="false"] {
+  transform: translateX(0);
+}
+.drawer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.drawer-links {
+  list-style: none;
+  padding: 0 20px;
+}
+.drawer-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #3949ab;
+  transition: background 0.2s;
+}
+.drawer-link:hover {
+  background: #3949ab;
+}
+@media (min-width: 901px) {
+  .drawer {
+    display: none;
+  }
+}
+/* --- End Navbar/Drawer Styles --- */
 * {
   box-sizing: border-box;
   margin: 0;

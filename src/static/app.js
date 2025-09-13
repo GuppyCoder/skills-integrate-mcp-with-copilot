@@ -1,4 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Mobile Navbar Drawer Logic ---
+  const drawer = document.getElementById("drawer");
+  const drawerToggle = document.getElementById("drawerToggle");
+  const drawerClose = document.getElementById("drawerClose");
+
+  function openDrawer() {
+    drawer.setAttribute("aria-hidden", "false");
+    drawer.setAttribute("tabindex", "0");
+    drawerToggle.setAttribute("aria-expanded", "true");
+    drawer.focus();
+    // Trap focus inside drawer
+    document.addEventListener("focus", trapFocus, true);
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    drawer.setAttribute("aria-hidden", "true");
+    drawer.setAttribute("tabindex", "-1");
+    drawerToggle.setAttribute("aria-expanded", "false");
+    document.removeEventListener("focus", trapFocus, true);
+    document.body.style.overflow = "";
+    drawerToggle.focus();
+  }
+
+  function trapFocus(e) {
+    if (!drawer.contains(e.target)) {
+      e.stopPropagation();
+      drawer.focus();
+    }
+  }
+
+  drawerToggle && drawerToggle.addEventListener("click", openDrawer);
+  drawerClose && drawerClose.addEventListener("click", closeDrawer);
+  drawer && drawer.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
+  // Close drawer when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      drawer.getAttribute("aria-hidden") === "false" &&
+      !drawer.contains(e.target) &&
+      e.target !== drawerToggle
+    ) {
+      closeDrawer();
+    }
+  });
+  // Close drawer on link click
+  document.querySelectorAll(".drawer-link").forEach((link) => {
+    link.addEventListener("click", closeDrawer);
+  });
+
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
